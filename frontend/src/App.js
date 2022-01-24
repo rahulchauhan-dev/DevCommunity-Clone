@@ -9,6 +9,9 @@ import ProfileScreen from './screens/ProfileScreen';
 import AddPostScreen from './screens/AddPostScreen';
 import EditPostScreen from './screens/EditPostScreen';
 import SavedPostsScreen from './screens/SavedPostsScreen';
+import CodeOfConduct from './screens/CodeOfConduct';
+import PrivacyPolicy from './screens/PrivacyPolicy';
+import TermsOfUse from './screens/TermsOfUse';
 
 
 function App() {
@@ -21,6 +24,10 @@ function App() {
           <Route exact path='/register' element={<RegisterScreen />} />
           <Route exact path='/addpost' element={<AddPostScreen />} />
           <Route exact path='/saved' element={<SavedPostsScreen />} />
+
+          <Route exact path='/code-of-conduct' element={<CodeOfConduct />} />
+          <Route exact path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route exact path='/terms-of-use' element={<TermsOfUse />} />
 
           <Route exact path='/editpost/:id' element={<EditPostScreen />} />
 

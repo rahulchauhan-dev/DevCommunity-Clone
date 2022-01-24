@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Row, Col, Tabs, Tab, Stack, ListGroup } from 'react-bootstrap'
+import { Container, Row, Col, Tabs, Tab, Stack, ListGroup, Nav } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import PostCover from '../components/PostCover'
 import { listPosts } from '../actions/postActions'
 import Loader from '../components/Loader'
@@ -60,6 +61,8 @@ const HomeScreen = () => {
                                 </ListGroup.Item>
                             </ListGroup>
                         </div>
+
+
                     </Stack>
 
                 </Col>
@@ -125,6 +128,20 @@ const HomeScreen = () => {
                             <b>HowTo is built in the open via Forem... Want to take part in the discussion?
                                 Join Forem.how 🌱</b>
                         </h4>
+                    </Container>
+
+                    <Container style={{ padding: '1rem' }}>
+                        <Nav className="flex-column" id='side-bar-nav'>
+                            <LinkContainer to='/'>
+                                <Nav.Link eventKey="home">🏠 Home</Nav.Link></LinkContainer>
+                            <LinkContainer to='/code-of-conduct'>
+                                <Nav.Link eventKey="coc">👍 Code of Conduct</Nav.Link></LinkContainer>
+                            <LinkContainer to='/privacy-policy'>
+                                <Nav.Link eventKey="pp">🤓 Privacy Policy</Nav.Link></LinkContainer>
+                            <LinkContainer to='/terms-of-use'>
+                                <Nav.Link eventKey="tou">👀 Terms of Use</Nav.Link></LinkContainer>
+
+                        </Nav>
                     </Container>
                 </Col>
             </Row>
