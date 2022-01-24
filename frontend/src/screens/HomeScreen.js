@@ -82,7 +82,7 @@ const HomeScreen = () => {
                                     {loading && <Loader />}
                                     {error && <h3>{error}</h3>}
                                     <Row xs={1} md={1} lg={1}>
-                                        {posts.map(post => (
+                                        {posts.sort((a, b) => (a.date) - (b.date)).map(post => (
                                             <Col key={post._id} id="post-cover-col">
                                                 <PostCover posts={post} />
                                             </Col>))
