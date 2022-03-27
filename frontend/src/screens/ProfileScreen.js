@@ -194,9 +194,17 @@ const ProfileScreen = () => {
             ) : (
               <>
                 {" "}
-                <Row style={{ marginTop: "2rem" }}>
+                <Row
+                  style={{
+                    marginTop: "2rem",
+                    marginRight: "12px",
+                    marginLeft: "12px",
+                    justifyContent: "flex-end",
+                    width: "fit-content",
+                  }}
+                >
                   <LinkContainer to="/addpost">
-                    <Button variant="outline-primary">AddPost</Button>
+                    <Button variant="outline-primary">Add Post</Button>
                   </LinkContainer>
                 </Row>
                 <Row>

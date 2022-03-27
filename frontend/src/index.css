@@ -37,6 +37,13 @@ body.dark-mode {
   transition: background-color 0.3s ease;
 }
 
+div.post-text-body,
+div.post-text-body span{
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+
 .nav-pills .nav-link{
   color: #e95420 !important;
 }
@@ -97,4 +104,12 @@ body.dark-mode {
 
 .dark-mode-toggle{
   height: 20px !important;
+}
+
+table{
+
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: white;
 }
