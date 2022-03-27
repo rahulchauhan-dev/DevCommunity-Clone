@@ -88,3 +88,13 @@ body.dark-mode {
   background: #fff;
   border: none;
 }
+
+@media (min-width: 300px){
+.navbar-expand-md .navbar-nav {
+    flex-direction: row;
+}
+}
+
+.dark-mode-toggle{
+  height: 20px !important;
+}

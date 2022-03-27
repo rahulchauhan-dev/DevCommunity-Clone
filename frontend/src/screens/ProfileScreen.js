@@ -210,7 +210,6 @@ const ProfileScreen = () => {
                   >
                     <thead>
                       <tr>
-                        <th>ID</th>
                         <th>DATE</th>
                         <th>TITLE</th>
                         <th></th>
@@ -220,7 +219,6 @@ const ProfileScreen = () => {
                     <tbody>
                       {myposts.map((mypost) => (
                         <tr key={mypost._id}>
-                          <td>{mypost._id}</td>
                           <td>
                             {new Intl.DateTimeFormat("en-US", {
                               year: "numeric",
