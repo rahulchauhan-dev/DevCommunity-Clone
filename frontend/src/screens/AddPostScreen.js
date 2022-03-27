@@ -9,6 +9,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { createPostAction } from "../actions/postActions";
+import { getUserMyPosts } from "../actions/userActions";
 
 const AddPostScreen = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,8 @@ const AddPostScreen = () => {
       navigate("/email-verify");
     }
     if (successCreate) {
+      dispatch({ type: "POST_CREATE_RESET" });
+      dispatch(getUserMyPosts());
       navigate("/profile");
     }
   }, [successCreate, userInfo, dispatch, navigate]);

@@ -48,6 +48,14 @@ const ProfileScreen = () => {
     dispatch({ type: "POST_CREATE_RESET" });
     dispatch({ type: "POST_UPDATE_RESET" });
 
+    if (successDelete) {
+      dispatch({ type: "POST_DELETE_RESET" });
+      dispatch(getUserMyPosts());
+    }
+    if (successCreate) {
+      dispatch(getUserMyPosts());
+    }
+
     if (!userInfo) {
       navigate("/login");
     } else if (!userInfo.verified) {
