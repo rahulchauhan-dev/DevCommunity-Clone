@@ -92,8 +92,16 @@ div.post-text-body span{
 
 #remove-caret{
  
-  background: #fff;
+  background: inherit;
   border: none;
+  padding-left: 0px;
+    padding-right: 0px;
+}
+
+
+
+.dropstart .dropdown-toggle::before {
+  display: none !important; 
 }
 
 @media (min-width: 300px){

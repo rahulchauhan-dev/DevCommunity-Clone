@@ -166,6 +166,15 @@ const HomeScreen = () => {
               <LinkContainer to="/">
                 <Nav.Link eventKey="home">🏠 Home</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link eventKey="showcase">👓 Showcase</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link eventKey="discuss">🗣️ Discussions</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link eventKey="achieve">🏆 Achievements</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/code-of-conduct">
                 <Nav.Link eventKey="coc">👍 Code of Conduct</Nav.Link>
               </LinkContainer>

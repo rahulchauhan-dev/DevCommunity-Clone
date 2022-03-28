@@ -13,6 +13,7 @@ import CodeOfConduct from "./screens/CodeOfConduct";
 import PrivacyPolicy from "./screens/PrivacyPolicy";
 import TermsOfUse from "./screens/TermsOfUse";
 import OTPScreen from "./screens/OTPScreen";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/" element={<HomeScreen />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }

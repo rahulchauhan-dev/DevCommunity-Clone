@@ -554,11 +554,11 @@ const PostScreen = () => {
                           </Col>
                         )}
                         <Col className="col-1">
-                          <Dropdown>
+                          <Dropdown drop="start">
                             <Dropdown.Toggle size="sm" id="remove-caret">
                               <FontAwesomeIcon
                                 icon={faEllipsisV}
-                                color="black"
+                                color="#c27c63"
                               />
                             </Dropdown.Toggle>
 
