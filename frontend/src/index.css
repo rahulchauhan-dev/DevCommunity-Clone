@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main{
+  min-height: 100vh;
+}
 
 .nav-link{
   color: white !important;
