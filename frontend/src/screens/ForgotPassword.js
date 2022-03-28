@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Container, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ForgotPassword = () => {
   const navigate = useNavigate();
 
@@ -12,7 +14,17 @@ const ForgotPassword = () => {
   const [otp, setOTP] = useState("");
   const [otpResponse, setOtpresponse] = useState("");
 
-  useEffect(() => {}, []);
+  const notify = (status) => {
+    toast(status, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -35,7 +47,7 @@ const ForgotPassword = () => {
           config
         );
         if (response.data.success) {
-          alert("Password has been Changed! Please Login");
+          notify("Password Changed! Please Login");
           navigate("/login");
         } else {
           setOtpresponse(response.data.error);
@@ -44,7 +56,7 @@ const ForgotPassword = () => {
         console.error(error);
       }
     } else {
-      alert("Passwords dont Match!");
+      notify("Passwords Dont Match.");
     }
   };
   const sendOTP = async (e) => {

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, logout } from "../actions/userActions";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const OTPScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,6 +19,18 @@ const OTPScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const notify = (status) => {
+    toast(status, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   useEffect(() => {
     if (userInfo) {
@@ -48,7 +62,7 @@ const OTPScreen = () => {
         config
       );
       if (response.data.success) {
-        alert("EMAIL VERIFIED! Please Re-Login");
+        notify("EMAIL VERIFIED! Please Re-Login");
         dispatch(logout());
         navigate("/login");
       } else {

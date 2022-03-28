@@ -14,10 +14,12 @@ import TermsOfUse from "./screens/TermsOfUse";
 import OTPScreen from "./screens/OTPScreen";
 import Footer from "./components/Footer";
 import ForgotPassword from "./screens/ForgotPassword";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <Router>
+      <ToastContainer />
       <Header />
       <main className="py-3">
         <Routes>
