@@ -663,57 +663,57 @@ const PostScreen = () => {
             id="side-profile-screen"
             style={{ marginBottom: "2rem", marginTop: "6rem" }}
           >
-            {loading ? (
-              <Loader />
-            ) : error ? (
-              <h3>{error}</h3>
-            ) : (
-              <>
-                <Container
-                  style={{
-                    border: "1px solid lightgrey",
-                    borderRadius: "10px",
-                    boxShadow: "0 0 1px #333",
-                    padding: "1rem",
-                  }}
-                >
+            <>
+              <Container
+                style={{
+                  border: "1px solid lightgrey",
+                  borderRadius: "10px",
+                  boxShadow: "0 0 1px #333",
+                  padding: "1rem",
+                }}
+              >
+                {error ? (
+                  <h3>{error}</h3>
+                ) : loading ? (
+                  <Loader />
+                ) : (
                   <SideProfile post={post} />
-                </Container>
+                )}
+              </Container>
 
-                <Container
-                  style={{
-                    border: "1px solid lightgrey",
-                    borderRadius: "10px",
-                    boxShadow: "0 0 1px #333",
-                    padding: "1rem",
-                    marginTop: "2rem",
-                  }}
-                >
-                  <Stack gap={2}>
-                    <div>
-                      <h5>
-                        More from {post && post.user ? post.user.name : null}
-                      </h5>
-                    </div>
-                    <div>
-                      <ListGroup variant="flush">
-                        {loadinguserposts && <Loader />}
-                        {erroruserposts && <p>{erroruserposts}</p>}
-                        {postsofuser
-                          .filter((postid) => postid._id !== id)
-                          .map((userpost) => (
-                            <ListGroup.Item>
-                              <LinkContainer to={`/posts/${userpost._id}`}>
-                                <a href="/#">{userpost.title}</a>
-                              </LinkContainer>
-                            </ListGroup.Item>
-                          ))}
-                      </ListGroup>
-                    </div>
-                  </Stack>
-                </Container>
-              </>
-            )}
+              <Container
+                style={{
+                  border: "1px solid lightgrey",
+                  borderRadius: "10px",
+                  boxShadow: "0 0 1px #333",
+                  padding: "1rem",
+                  marginTop: "2rem",
+                }}
+              >
+                <Stack gap={2}>
+                  <div>
+                    <h5>
+                      More from {post && post.user ? post.user.name : null}
+                    </h5>
+                  </div>
+                  <div>
+                    <ListGroup variant="flush">
+                      {loadinguserposts && <Loader />}
+                      {erroruserposts && <p>{erroruserposts}</p>}
+                      {postsofuser
+                        .filter((postid) => postid._id !== id)
+                        .map((userpost) => (
+                          <ListGroup.Item>
+                            <LinkContainer to={`/posts/${userpost._id}`}>
+                              <a href="/#">{userpost.title}</a>
+                            </LinkContainer>
+                          </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                  </div>
+                </Stack>
+              </Container>
+            </>
           </Col>
         </Row>
       </Container>
