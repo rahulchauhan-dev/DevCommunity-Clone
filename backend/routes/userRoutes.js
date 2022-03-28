@@ -9,6 +9,8 @@ import {
   savedPost,
   sendOTP,
   OTPVerify,
+  OTPVerifyAndPassword,
+  sendOTPforPassword,
 } from "../controllers/userController.js";
 import { protect } from "../middleware/authMiddlerware.js";
 
@@ -22,5 +24,7 @@ router
 router.route("/:id/saved").get(protect, savedPost);
 router.route("/send-otp").put(protect, sendOTP);
 router.route("/verify-otp").put(protect, OTPVerify);
+router.route("/forgot-password-otp").put(sendOTPforPassword);
+router.route("/verify-password-otp").put(OTPVerifyAndPassword);
 
 export default router;

@@ -13,6 +13,7 @@ import PrivacyPolicy from "./screens/PrivacyPolicy";
 import TermsOfUse from "./screens/TermsOfUse";
 import OTPScreen from "./screens/OTPScreen";
 import Footer from "./components/Footer";
+import ForgotPassword from "./screens/ForgotPassword";
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
 
           <Route exact path="/profile" element={<ProfileScreen />} />
           <Route exact path="/login" element={<LoginScreen />} />
-          <Route path="email-verify" element={<OTPScreen />} />
+          <Route path="/email-verify" element={<OTPScreen />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
           <Route path="/search/:keyword" element={<HomeScreen />} />
 
           <Route exact path="/" element={<HomeScreen />} />

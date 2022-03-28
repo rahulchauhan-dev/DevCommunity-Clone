@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
+import { LinkContainer } from "react-router-bootstrap";
 
 const LoginScreen = () => {
   const location = useLocation();
@@ -78,6 +79,10 @@ const LoginScreen = () => {
           >
             Continue
           </Button>
+          <br></br>
+          <LinkContainer to="/forgot-password">
+            <a href="/#">Forgot Password.😔</a>
+          </LinkContainer>
         </Form>
       </Container>
     </Container>

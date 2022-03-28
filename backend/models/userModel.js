@@ -29,6 +29,9 @@ const userSchema = mongoose.Schema(
     otp: {
       type: String,
     },
+    passotp: {
+      type: String,
+    },
     work: {
       type: String,
     },

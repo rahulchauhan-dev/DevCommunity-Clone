@@ -186,9 +186,9 @@ const sendOTP = asyncHandler(async (req, res) => {
 
     var mailOptions = {
       to: data.data,
-      subject: "Otp for registration for HowTo Community is: ",
+      subject: "OTP Verification",
       html:
-        "<h3>OTP for account verification is </h3>" +
+        "<h3>OTP for account verification for HowTo Community is </h3>" +
         "<h1 style='font-weight:bold;'>" +
         otp +
         "</h1>", // html body
@@ -232,6 +232,67 @@ const OTPVerify = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc PUT send otp
+//@route PUT /api/forgot-password
+//@access Public
+const sendOTPforPassword = asyncHandler(async (req, res) => {
+  const data = req.body;
+
+  const user = await User.findOne({ email: data.data });
+
+  if (user) {
+    var otp = Math.random();
+    otp = otp * 1000000;
+    otp = parseInt(otp);
+
+    var mailOptions = {
+      to: data.data,
+      subject: "Forgot Password",
+      html:
+        "<h3>OTP for Password Change request is </h3>" +
+        "<h1 style='font-weight:bold;'>" +
+        otp +
+        "</h1>", // html body
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log("Message sent: %s", info.messageId);
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    });
+    res.json("OTP SENT!");
+    user.passotp = otp || user.passotp;
+    await user.save();
+  } else {
+    res.status(404);
+    throw new Error("OTP not Sent");
+  }
+});
+
+//@desc PUT OTPVerify and ChangePassword
+//@route PUT /api/forgot-password
+//@access Private
+const OTPVerifyAndPassword = asyncHandler(async (req, res) => {
+  const data = req.body;
+  const user = await User.findOne({ email: data.data.email });
+
+  if (user) {
+    if (user.passotp === data.data.enteredOTP) {
+      user.password = data.data.newPassword;
+
+      await user.save();
+      res.json({ success: "Password Chagned! Plesase Re-Login" });
+    } else {
+      res.json({ error: "Wrong OTP or Email Please Try Again." });
+    }
+  } else {
+    res.status(404);
+    throw new Error("Cant Verify");
+  }
+});
+
 export {
   authUser,
   getUserProfile,
@@ -241,4 +302,6 @@ export {
   savedPost,
   sendOTP,
   OTPVerify,
+  sendOTPforPassword,
+  OTPVerifyAndPassword,
 };

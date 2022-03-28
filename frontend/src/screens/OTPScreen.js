@@ -80,7 +80,7 @@ const OTPScreen = () => {
     <Container className="pt-4 text-center" style={{ marginTop: "6rem" }}>
       <Container
         className="justify-content-md-center text-center shadow-lg p-4"
-        style={{ maxWidth: "600px", fontWeight: "bold" }}
+        style={{ maxWidth: "600px", fontWeight: "bold", borderRadius: "2rem" }}
       >
         <h3>Email Verification</h3>
         {error && <h2>{error}</h2>}
@@ -117,7 +117,11 @@ const OTPScreen = () => {
             <Button
               onClick={sendOTP}
               className="btn"
-              style={{ borderRadius: "0.5em", fontWeight: "600" }}
+              style={{
+                borderRadius: "0.5em",
+                fontWeight: "600",
+                marginRight: "1rem",
+              }}
             >
               Send OTP
             </Button>
