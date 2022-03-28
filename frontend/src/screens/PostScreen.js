@@ -358,7 +358,7 @@ const PostScreen = () => {
         </Modal>
         <Row>
           <Col
-            className="col-md-8"
+            className="col-md-8 col-12"
             style={{ marginBottom: "2rem", marginTop: "6rem" }}
           >
             {loading ? (
@@ -381,8 +381,7 @@ const PostScreen = () => {
                         alt="postImage"
                         id="post-screen-thumbnail"
                         style={{
-                          width: "854px",
-                          height: "400px",
+                          width: "inherit",
                           borderTopRightRadius: "5px",
                           borderTopLeftRadius: "5px",
                         }}

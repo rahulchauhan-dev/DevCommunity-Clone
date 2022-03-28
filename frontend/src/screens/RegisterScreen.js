@@ -36,7 +36,7 @@ const RegisterScreen = () => {
     <Container className="pt-4 text-center" style={{ marginTop: "6rem" }}>
       <Container
         className="justify-content-md-center text-center shadow-lg p-4"
-        style={{ maxWidth: "600px", fontWeight: "bold" }}
+        style={{ maxWidth: "600px", fontWeight: "bold", borderRadius: "2rem" }}
       >
         <h3>Welcome to HowTo Community</h3>
         <h4>
