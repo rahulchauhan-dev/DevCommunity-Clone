@@ -8,7 +8,7 @@ const Footer = () => {
       className="d-flex justify-content-center pt-3"
       style={{ borderTop: "1px solid lightgrey" }}
     >
-      <p>Copyright ©️ HowTo Community 2022</p>
+      <p>Copyright ©️ HowTo Community 2022.</p>
     </Container>
   );
 };
