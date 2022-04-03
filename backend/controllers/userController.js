@@ -158,10 +158,10 @@ const getMyPosts = asyncHandler(async (req, res) => {
 //@route GET /api/saved
 //@access Private
 const savedPost = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id).populate(
-    "savedPost.post",
-    "_id title"
-  );
+  const user = await User.findById(req.params.id).populate({
+    path: "savedPost.post",
+    select: "_id title",
+  });
 
   if (user) {
     res.json(user.savedPost);

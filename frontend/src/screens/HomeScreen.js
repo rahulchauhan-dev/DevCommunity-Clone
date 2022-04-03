@@ -103,7 +103,7 @@ const HomeScreen = () => {
                       .sort((a, b) => a.date - b.date)
                       .map((post) => (
                         <Col key={post._id} id="post-cover-col">
-                          <PostCover posts={post} />
+                          <PostCover key={post._id} posts={post} />
                         </Col>
                       ))}
                   </Row>
@@ -119,7 +119,7 @@ const HomeScreen = () => {
                       .sort((a, b) => b.date - a.date)
                       .map((post) => (
                         <Col key={post._id} id="post-cover-col">
-                          <PostCover posts={post} />
+                          <PostCover key={post._id} posts={post} />
                         </Col>
                       ))}
                   </Row>
@@ -135,7 +135,7 @@ const HomeScreen = () => {
                       .sort((a, b) => b.likes.length - a.likes.length)
                       .map((post) => (
                         <Col key={post._id} id="post-cover-col">
-                          <PostCover posts={post} />
+                          <PostCover key={post._id} posts={post} />
                         </Col>
                       ))}
                   </Row>

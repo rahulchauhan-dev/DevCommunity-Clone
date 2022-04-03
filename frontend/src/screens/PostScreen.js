@@ -376,7 +376,12 @@ const PostScreen = () => {
                   }}
                 >
                   <Stack gap={3}>
-                    <Container style={{ overflow: "hidden", padding: "0" }}>
+                    <Container
+                      style={{
+                        overflow: "hidden",
+                        padding: "0",
+                      }}
+                    >
                       <img
                         alt="postImage"
                         id="post-screen-thumbnail"
@@ -384,6 +389,8 @@ const PostScreen = () => {
                           width: "inherit",
                           borderTopRightRadius: "5px",
                           borderTopLeftRadius: "5px",
+                          height: "100%",
+                          objectFit: "cover",
                         }}
                         src={post.postImage}
                       ></img>
