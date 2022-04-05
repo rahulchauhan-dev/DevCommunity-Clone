@@ -76,11 +76,11 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/profile">
+                <LinkContainer to="/dashboard">
                   <Nav.Link>
                     <OverlayTrigger
                       placement="bottom"
-                      overlay={<Tooltip>Profile</Tooltip>}
+                      overlay={<Tooltip>Dashboard</Tooltip>}
                     >
                       <img src="/svg/user2.svg" alt="user"></img>
                     </OverlayTrigger>

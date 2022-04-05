@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { createPostAction } from "../actions/postActions";
 import { getUserMyPosts } from "../actions/userActions";
+import { notify } from "../components/Toast";
 
 const AddPostScreen = () => {
   const dispatch = useDispatch();
@@ -47,9 +48,10 @@ const AddPostScreen = () => {
       navigate("/email-verify");
     }
     if (successCreate) {
+      notify("Post Created!");
       dispatch({ type: "POST_CREATE_RESET" });
       dispatch(getUserMyPosts());
-      navigate("/profile");
+      navigate("/dashboard");
     }
   }, [successCreate, userInfo, dispatch, navigate]);
 

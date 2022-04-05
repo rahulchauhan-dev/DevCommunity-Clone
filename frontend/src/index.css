@@ -138,3 +138,8 @@ and (max-device-width : 768px) {
    padding: 0;
    cursor: pointer;
  }
+
+ .nav-item a[role="tab"]{
+   user-select: none;
+   cursor: pointer;
+ }

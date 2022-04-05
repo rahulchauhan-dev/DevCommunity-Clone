@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { deletePostAction } from "../actions/postActions";
 import Loader from "../components/Loader";
 
-const ProfileScreen = () => {
+const ProfileScreenOld = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -277,4 +277,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default ProfileScreenOld;

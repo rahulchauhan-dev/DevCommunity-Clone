@@ -39,14 +39,28 @@ const SavedPostsScreen = () => {
         <ListGroup as="ol" numbered>
           {loading && <Loader />}
           {error && <p>{error}</p>}
-          {posts &&
+          {posts.length === 0 ? (
+            <Container className="p-3 text-center">
+              <img
+                src="/svg/empty-board.svg"
+                alt="empty-board"
+                width="200px"
+                style={{ padding: "2rem" }}
+              ></img>
+              <h5>
+                This is where you can manage your bookmarked posts, but you
+                haven't bookmarked anything yet.
+              </h5>
+            </Container>
+          ) : (
             posts.map((post) => (
               <ListGroup.Item key={post.post._id} as="li">
                 <LinkContainer to={`/posts/${post.post._id}`}>
                   <a href="/#">{post.post.title}</a>
                 </LinkContainer>
               </ListGroup.Item>
-            ))}
+            ))
+          )}
         </ListGroup>
       </Container>
     </Container>

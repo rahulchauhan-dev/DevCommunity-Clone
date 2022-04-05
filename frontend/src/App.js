@@ -4,7 +4,6 @@ import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import PostScreen from "./screens/PostScreen";
-import ProfileScreen from "./screens/ProfileScreen";
 import AddPostScreen from "./screens/AddPostScreen";
 import EditPostScreen from "./screens/EditPostScreen";
 import SavedPostsScreen from "./screens/SavedPostsScreen";
@@ -15,6 +14,7 @@ import OTPScreen from "./screens/OTPScreen";
 import Footer from "./components/Footer";
 import ForgotPassword from "./screens/ForgotPassword";
 import { ToastContainer } from "react-toastify";
+import UserDashboard from "./screens/UserDashboard";
 
 function App() {
   return (
@@ -34,7 +34,8 @@ function App() {
 
           <Route exact path="/editpost/:id" element={<EditPostScreen />} />
 
-          <Route exact path="/profile" element={<ProfileScreen />} />
+          <Route exact path="/dashboard" element={<UserDashboard />} />
+
           <Route exact path="/login" element={<LoginScreen />} />
           <Route path="/email-verify" element={<OTPScreen />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

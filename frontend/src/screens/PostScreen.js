@@ -40,6 +40,7 @@ import SideProfile from "../components/SideProfile";
 import Loader from "../components/Loader";
 import { LinkContainer } from "react-router-bootstrap";
 import { getUserDetails } from "../actions/userActions";
+import { notify } from "../components/Toast";
 
 const PostScreen = () => {
   const dispatch = useDispatch();
@@ -185,7 +186,7 @@ const PostScreen = () => {
 
   const commentHandler = () => {
     if (!userInfo) {
-      alert("Please Login to Add a Discussion");
+      notify("Please Login to Add a Discussion");
     } else {
       dispatch(commentPostAction({ comment }, post._id));
     }
@@ -193,7 +194,7 @@ const PostScreen = () => {
 
   const likeHandler = () => {
     if (!userInfo) {
-      alert("Please Login to Like a Post");
+      notify("Please Login to Rate a Post");
     } else {
       dispatch(likePostAction(id));
     }
@@ -201,7 +202,7 @@ const PostScreen = () => {
 
   const unlikeHandler = () => {
     if (!userInfo) {
-      alert("Please Login to Like a Post");
+      notify("Please Login to Rate a Post");
     } else {
       dispatch(unlikePostAction(id));
     }
@@ -209,7 +210,7 @@ const PostScreen = () => {
 
   const saveHandler = () => {
     if (!userInfo) {
-      alert("Please Login to Save a Post");
+      notify("Please Login to Bookmark a Post");
     } else {
       dispatch(savePostAction(id));
     }
@@ -217,7 +218,7 @@ const PostScreen = () => {
 
   const unsaveHandler = () => {
     if (!userInfo) {
-      alert("Please Login to Save a Post");
+      notify("Please Login to Bookmark a Post");
     } else {
       dispatch(unsavePostAction(id));
     }
@@ -249,7 +250,7 @@ const PostScreen = () => {
   useEffect(() => {
     if (successReport) {
       handleClose();
-      alert("Report Added");
+      notify("Thanks for your valuable Report!");
     }
   }, [successReport]);
 
