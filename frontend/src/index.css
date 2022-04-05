@@ -143,3 +143,13 @@ and (max-device-width : 768px) {
    user-select: none;
    cursor: pointer;
  }
+
+ .form-control{
+   color: inherit !important;
+   background-color: inherit !important;
+ }
+
+ .list-group-item{
+  color: inherit !important;
+  background-color: inherit !important;
+ }

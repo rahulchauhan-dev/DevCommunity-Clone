@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
+import { Container, Row, Col, Tab, Nav, Stack } from "react-bootstrap";
 import Posts from "../components/Posts";
 import Profile from "../components/Profile";
 
@@ -11,13 +11,82 @@ const UserDashboard = () => {
           <Row
             style={{
               border: "1px solid #c2c2c2",
-              padding: "2rem",
-              borderRadius: "2rem",
+              padding: "1rem",
+              borderRadius: "1rem",
+              marginRight: "0px",
+              marginLeft: "0px",
             }}
           >
             <Col>
-              <h2 style={{ fontWeight: "bold" }}>Hello! Rahul</h2>
+              <h2 style={{ fontWeight: "bold" }}>Hola!</h2>
               <h2>Welcome to your Dashboard🔥</h2>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col>
+              <Stack direction="horizontal" gap={3}>
+                <div
+                  className="card border-secondary mb-3"
+                  style={{
+                    maxWidth: "20rem",
+                    borderRadius: "1rem",
+                    width: "100%",
+                    background: "inherit",
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title fw-bold">Total Posts</h5>
+                    <p className="card-text fs-4">25</p>
+                  </div>
+                </div>
+
+                <div
+                  className="card border-secondary mb-3"
+                  style={{
+                    maxWidth: "20rem",
+                    borderRadius: "1rem",
+                    width: "100%",
+                    background: "inherit",
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title fw-bold">Total Likes</h5>
+                    <p className="card-text fs-4">68</p>
+                  </div>
+                </div>
+              </Stack>
+            </Col>
+            <Col>
+              <Stack direction="horizontal" gap={3}>
+                <div
+                  className="card border-secondary mb-3"
+                  style={{
+                    maxWidth: "20rem",
+                    borderRadius: "1rem",
+                    width: "100%",
+                    background: "inherit",
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title fw-bold">Followers</h5>
+                    <p className="card-text fs-4">2569</p>
+                  </div>
+                </div>
+                <div
+                  className="card border-secondary mb-3"
+                  style={{
+                    maxWidth: "20rem",
+                    borderRadius: "1rem",
+                    width: "100%",
+                    background: "inherit",
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title fw-bold">Following</h5>
+                    <p className="card-text fs-4">2558</p>
+                  </div>
+                </div>
+              </Stack>
             </Col>
           </Row>
           <Row>
