@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import ForgotPassword from "./screens/ForgotPassword";
 import { ToastContainer } from "react-toastify";
 import UserDashboard from "./screens/UserDashboard";
+import Page404 from "./screens/Page404";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/search/:keyword" element={<HomeScreen />} />
 
           <Route exact path="/" element={<HomeScreen />} />
+          <Route exact path="*" element={<Page404 />} />
         </Routes>
       </main>
       <Footer />
