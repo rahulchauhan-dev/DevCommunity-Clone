@@ -2,24 +2,27 @@ import asyncHandler from "express-async-handler";
 import Post from "../models/postModel.js";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import sgMail from "@sendgrid/mail";
 
 dotenv.config();
-let transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  service: "Gmail",
 
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+// let transporter = nodemailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true,
+//   service: "Gmail",
+
+//   auth: {
+//     user: process.env.EMAIL,
+//     pass: process.env.EMAIL_PASS,
+//   },
+//   tls: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 //@desc Auth user & get token
 //@route POST /api/users/login
@@ -65,7 +68,7 @@ const registerUser = asyncHandler(async (req, res) => {
     avatar: `https://avatars.dicebear.com/api/${gender}/${name
       .split(" ")[0]
       .toLowerCase()}.svg`,
-    verified: true /*making it true cause smtp mail not working in heroku */,
+    verified: false,
   });
 
   if (user) {
@@ -186,24 +189,47 @@ const sendOTP = asyncHandler(async (req, res) => {
     otp = otp * 1000000;
     otp = parseInt(otp);
 
-    var mailOptions = {
+    // var mailOptions = {
+    //   to: data.data,
+    //   subject: "OTP Verification",
+    //   html:
+    //     "<h3>OTP for account verification for HowTo Community is </h3>" +
+    //     "<h1 style='font-weight:bold;'>" +
+    //     otp +
+    //     "</h1>", // html body
+    // };
+
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     return console.log(error);
+    //   }
+    //   console.log("Message sent: %s", info.messageId);
+    //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // });
+
+    const msg = {
       to: data.data,
-      subject: "OTP Verification",
+      from: "howtocommunityofficial@gmail.com", // Use the email address or domain you verified above
+      subject: "Email Verification",
       html:
         "<h3>OTP for account verification for HowTo Community is </h3>" +
         "<h1 style='font-weight:bold;'>" +
         otp +
-        "</h1>", // html body
+        "</h1>",
     };
+    sgMail.send(msg).then(
+      () => {
+        res.json("OTP SENT!");
+      },
+      (error) => {
+        console.error(error);
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
+        if (error.response) {
+          console.error(error.response.body);
+        }
       }
-      console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    });
-    res.json("OTP SENT!");
+    );
+
     user.otp = otp || user.otp;
     await user.save();
   } else {
@@ -247,24 +273,48 @@ const sendOTPforPassword = asyncHandler(async (req, res) => {
     otp = otp * 1000000;
     otp = parseInt(otp);
 
-    var mailOptions = {
+    // var mailOptions = {
+    //   to: data.data,
+    //   subject: "Forgot Password",
+    //   html:
+    //     "<h3>OTP for Password Change request is </h3>" +
+    //     "<h1 style='font-weight:bold;'>" +
+    //     otp +
+    //     "</h1>", // html body
+    // };
+
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     return console.log(error);
+    //   }
+    //   console.log("Message sent: %s", info.messageId);
+    //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // });
+
+    const msg = {
       to: data.data,
+      from: "howtocommunityofficial@gmail.com", // Use the email address or domain you verified above
       subject: "Forgot Password",
+
       html:
         "<h3>OTP for Password Change request is </h3>" +
         "<h1 style='font-weight:bold;'>" +
         otp +
-        "</h1>", // html body
+        "</h1>",
     };
+    sgMail.send(msg).then(
+      () => {
+        res.json("OTP SENT!");
+      },
+      (error) => {
+        console.error(error);
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
+        if (error.response) {
+          console.error(error.response.body);
+        }
       }
-      console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    });
-    res.json("OTP SENT!");
+    );
+
     user.passotp = otp || user.passotp;
     await user.save();
   } else {
