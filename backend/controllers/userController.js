@@ -3,6 +3,8 @@ import Post from "../models/postModel.js";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
 
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -11,8 +13,8 @@ let transporter = nodemailer.createTransport({
   service: "Gmail",
 
   auth: {
-    user: "rahulspam7@gmail.com",
-    pass: "jimmyconway69$",
+    user: `${process.env.EMAIL}`,
+    pass: `${process.env.EMAIL_PASS}`,
   },
   tls: {
     rejectUnauthorized: false,
