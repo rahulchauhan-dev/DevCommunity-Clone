@@ -42,6 +42,8 @@ const Profile = () => {
   useEffect(() => {
     if (success) {
       notify("Profile Updated!");
+      dispatch(getUserDetails("profile"));
+      dispatch({ type: "USER_UPDATE_RESET" });
     }
 
     if (!userInfo) {

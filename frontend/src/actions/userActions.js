@@ -40,6 +40,15 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: "USER_LOGOUT",
   });
+  dispatch({
+    type: "USER_DETAILS_RESET",
+  });
+  dispatch({
+    type: "USER_MYPOSTS_RESET",
+  });
+  dispatch({
+    type: "POST_SAVEDLIST_RESET",
+  });
 };
 
 export const register = (name, gender, email, password) => async (dispatch) => {
