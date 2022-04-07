@@ -121,7 +121,7 @@ const AddPostScreen = () => {
   };
 
   return (
-    <Container style={{ marginTop: "6rem", width: "800px" }}>
+    <Container style={{ marginTop: "6rem", maxWidth: "800px" }}>
       <Col>
         <Row>
           <Form onSubmit={blogSubmitHandler}>
