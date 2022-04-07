@@ -4,8 +4,8 @@ import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-dotenv.config();
 
+dotenv.config();
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
@@ -13,8 +13,8 @@ let transporter = nodemailer.createTransport({
   service: "Gmail",
 
   auth: {
-    user: `${process.env.EMAIL}`,
-    pass: `${process.env.EMAIL_PASS}`,
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
     rejectUnauthorized: false,
@@ -65,7 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
     avatar: `https://avatars.dicebear.com/api/${gender}/${name
       .split(" ")[0]
       .toLowerCase()}.svg`,
-    verified: false,
+    verified: true /*making it true cause smtp mail not working in heroku */,
   });
 
   if (user) {
