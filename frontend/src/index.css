@@ -153,3 +153,8 @@ and (max-device-width : 768px) {
   color: inherit !important;
   background-color: inherit !important;
  }
+
+
+ .modal-content{
+   color: initial !important;
+ }
