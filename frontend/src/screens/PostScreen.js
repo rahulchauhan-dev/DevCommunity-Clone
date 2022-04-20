@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Container,
   Stack,
@@ -46,9 +46,6 @@ import Share from "../components/Share";
 const PostScreen = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
-  const location = useLocation();
-  const currentUrl = location.pathname;
 
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -583,7 +580,6 @@ const PostScreen = () => {
                                 <Share
                                   props={{
                                     title: post.title,
-                                    url: currentUrl,
                                     tags: post.tags && post.tags.split(","),
                                     user:
                                       post && post.user ? post.user.name : null,

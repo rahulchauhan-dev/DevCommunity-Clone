@@ -11,8 +11,8 @@ const Share = ({ props }) => {
       style={{ display: "flex", justifyContent: "space-evenly" }}
     >
       <FacebookShareButton
-        url={props.url}
-        quote={`${props.title}By: ${props.user}`}
+        url={window.location.href}
+        quote={`${props.title} By: ${props.user}`}
         hashtag={"#howtocommunity"}
       >
         <FacebookIcon size={32} round />
@@ -20,7 +20,7 @@ const Share = ({ props }) => {
 
       <TwitterShareButton
         title={props.title}
-        url={props.url}
+        url={window.location.href}
         hashtags={props.tags}
       >
         <TwitterIcon size={32} round />
@@ -28,7 +28,7 @@ const Share = ({ props }) => {
 
       <RedditShareButton
         title={props.title}
-        url={props.url}
+        url={window.location.href}
         hashtags={props.tags}
       >
         <RedditIcon size={32} round />
