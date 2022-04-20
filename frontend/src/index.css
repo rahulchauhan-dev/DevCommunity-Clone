@@ -99,6 +99,8 @@ div.post-text-body span{
   border: none;
   padding-left: 0px;
     padding-right: 0px;
+    box-shadow: none;
+    outline: 0;
 }
 
 

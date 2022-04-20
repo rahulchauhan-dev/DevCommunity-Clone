@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import {
   Container,
   Stack,
@@ -41,10 +41,14 @@ import Loader from "../components/Loader";
 import { LinkContainer } from "react-router-bootstrap";
 import { getUserDetails } from "../actions/userActions";
 import { notify } from "../components/Toast";
+import Share from "../components/Share";
 
 const PostScreen = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const location = useLocation();
+  const currentUrl = location.pathname;
 
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -572,6 +576,19 @@ const PostScreen = () => {
                             <Dropdown.Menu>
                               <Dropdown.Item onClick={handleShow}>
                                 Report Abuse
+                              </Dropdown.Item>
+                              <Dropdown.Divider />
+                              <Dropdown.Item>
+                                Share
+                                <Share
+                                  props={{
+                                    title: post.title,
+                                    url: currentUrl,
+                                    tags: post.tags && post.tags.split(","),
+                                    user:
+                                      post && post.user ? post.user.name : null,
+                                  }}
+                                />
                               </Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>
