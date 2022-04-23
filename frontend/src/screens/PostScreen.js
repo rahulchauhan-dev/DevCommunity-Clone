@@ -417,7 +417,17 @@ const PostScreen = () => {
                           id="username"
                           style={{ paddingTop: "10px" }}
                         >
-                          <Row>{post && post.user ? post.user.name : null}</Row>
+                          <Row>
+                            <LinkContainer
+                              to={`/users/${
+                                post && post.user ? post.user._id : null
+                              }`}
+                            >
+                              <a href="/#">
+                                {post && post.user ? post.user.name : null}
+                              </a>
+                            </LinkContainer>
+                          </Row>
                           <Row style={{ fontSize: "small" }}>
                             {new Intl.DateTimeFormat("en-US", {
                               year: "numeric",

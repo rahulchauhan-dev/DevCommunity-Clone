@@ -46,6 +46,12 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    skills: {
+      type: String,
+    },
+    socials: {
+      type: String,
+    },
     savedPost: [
       {
         post: {

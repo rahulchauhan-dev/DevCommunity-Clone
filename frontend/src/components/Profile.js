@@ -29,6 +29,8 @@ const Profile = () => {
   const [work, setWork] = useState("");
   const [location, setLocation] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [skills, setSkills] = useState("");
+  const [socials, setSocials] = useState("");
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
@@ -60,6 +62,8 @@ const Profile = () => {
         setAvatar(user.avatar);
         setWork(user.work);
         setLocation(user.location);
+        setSkills(user.skills);
+        setSocials(user.socials);
       }
     }
   }, [dispatch, user, userInfo, navigate, success]);
@@ -74,6 +78,8 @@ const Profile = () => {
         bio,
         work,
         location,
+        skills,
+        socials,
       })
     );
   };
@@ -138,6 +144,26 @@ const Profile = () => {
                   placeholder="Enter Work"
                   value={work || ""}
                   onChange={(e) => setWork(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <br></br>
+              <Form.Group controlId="skills">
+                <Form.Label>Skills/Language</Form.Label>
+                <Form.Control
+                  type="name"
+                  placeholder="Add your Skills or Languages you know"
+                  value={skills || ""}
+                  onChange={(e) => setSkills(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <br></br>
+              <Form.Group controlId="socials">
+                <Form.Label>Github</Form.Label>
+                <Form.Control
+                  type="name"
+                  placeholder="Add github link or any other social link"
+                  value={socials || ""}
+                  onChange={(e) => setSocials(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <br></br>

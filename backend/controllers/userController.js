@@ -108,6 +108,33 @@ const getUserProfile = asyncHandler(async (req, res) => {
       avatar: user.avatar,
       savedPost: user.savedPost,
       verified: user.verified,
+      skills: user.skills,
+      socials: user.socials,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not Found");
+  }
+});
+
+//@desc Get user profile
+//@route GET /api/users/:id
+//@access Public
+const getUserPublicProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      bio: user.bio,
+      work: user.work,
+      location: user.location,
+      avatar: user.avatar,
+      skills: user.skills,
+      socials: user.socials,
+      date: user.date,
     });
   } else {
     res.status(404);
@@ -128,6 +155,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.bio = req.body.bio || user.bio;
     user.work = req.body.work || user.work;
     user.location = req.body.location || user.location;
+    user.skills = req.body.skills || user.skills;
+    user.socials = req.body.socials || user.socials;
 
     if (req.body.password) {
       user.password = req.body.password;
@@ -352,6 +381,7 @@ export {
   updateUserProfile,
   getMyPosts,
   savedPost,
+  getUserPublicProfile,
   sendOTP,
   OTPVerify,
   sendOTPforPassword,

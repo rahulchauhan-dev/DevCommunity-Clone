@@ -235,3 +235,24 @@ export const listSavedPosts = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const userPublicProfileAction = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "USER_PUBLIC_PROFILE_REQUEST" });
+
+    const { data } = await axios.get(`/api/users/${id}`);
+
+    dispatch({
+      type: "USER_PUBLIC_PROFILE_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "USER_PUBLIC_PROFILE_FAIL",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

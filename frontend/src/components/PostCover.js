@@ -49,7 +49,15 @@ const PostCover = ({ posts }) => {
               ></img>
             </Col>
             <Col md="auto" id="username" style={{ paddingTop: "10px" }}>
-              <Row>{posts.user.name}</Row>
+              <Row>
+                <LinkContainer
+                  to={`/users/${posts && posts.user ? posts.user._id : null}`}
+                >
+                  <a href="/#" id="href-cover">
+                    {posts && posts.user ? posts.user.name : null}
+                  </a>
+                </LinkContainer>
+              </Row>
               <Row style={{ fontSize: "small" }}>
                 {new Intl.DateTimeFormat("en-US", {
                   year: "numeric",

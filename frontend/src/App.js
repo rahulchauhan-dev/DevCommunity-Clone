@@ -16,6 +16,7 @@ import ForgotPassword from "./screens/ForgotPassword";
 import { ToastContainer } from "react-toastify";
 import UserDashboard from "./screens/UserDashboard";
 import Page404 from "./screens/Page404";
+import UserProfileScreen from "./screens/UserProfileScreen";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route exact path="/register" element={<RegisterScreen />} />
           <Route exact path="/addpost" element={<AddPostScreen />} />
           <Route exact path="/saved" element={<SavedPostsScreen />} />
+
+          <Route exact path="/users/:id" element={<UserProfileScreen />} />
 
           <Route exact path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
