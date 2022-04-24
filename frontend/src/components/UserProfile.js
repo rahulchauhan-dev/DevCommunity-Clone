@@ -1,10 +1,23 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col, Stack, ListGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Stack,
+  ListGroup,
+  Button,
+  ButtonGroup,
+  Dropdown,
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
-import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLink,
+  faEllipsisV,
+} from "@fortawesome/free-solid-svg-icons";
 import { listuserPosts } from "../actions/postActions";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -36,7 +49,7 @@ const UserProfile = ({ user }) => {
           color: "white",
         }}
       >
-        <Col style={{ position: "relative", top: "-65px" }}>
+        <Col style={{ position: "relative", marginTop: "-65px" }}>
           <Row className="justify-content-center">
             <img
               alt="postAvatar"
@@ -81,6 +94,33 @@ const UserProfile = ({ user }) => {
             <Col md="auto">
               💼 at {user.work !== undefined ? user.work : "N/A"}
             </Col>
+          </Row>
+          <Row className="justify-content-center m-3">
+            <ButtonGroup style={{ width: "fit-content" }}>
+              <Button>Follow</Button>
+
+              <Dropdown
+                as={ButtonGroup}
+                drop="start"
+                style={{
+                  background: "#e95420",
+                  borderTopRightRadius: "0.25rem",
+                  borderBottomRightRadius: "0.25rem",
+                }}
+              >
+                <Dropdown.Toggle
+                  size="sm"
+                  id="remove-caret"
+                  style={{ paddingRight: "10px" }}
+                >
+                  <FontAwesomeIcon icon={faEllipsisV} color="white" />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item>Report Abuse</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </ButtonGroup>
           </Row>
         </Col>
       </Container>
@@ -155,7 +195,7 @@ const UserProfile = ({ user }) => {
               <Loader />
             ) : erroruserposts ? (
               <p>{erroruserposts}</p>
-            ) : (
+            ) : postsofuser.length !== 0 ? (
               postsofuser.map((userpost) => (
                 <ListGroup.Item key={userpost._id}>
                   <LinkContainer to={`/posts/${userpost._id}`}>
@@ -163,6 +203,8 @@ const UserProfile = ({ user }) => {
                   </LinkContainer>
                 </ListGroup.Item>
               ))
+            ) : (
+              "No Posts Published Yet😔"
             )}
           </Col>
         </Row>
