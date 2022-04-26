@@ -83,13 +83,17 @@ const UserProfile = ({ user }) => {
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
               &nbsp;&nbsp;&nbsp;
-              <a
-                href={user.socials !== undefined ? user.socials : "Link"}
-                target="_blank"
-                rel="noreferrer"
-              >
+              {user.socials !== undefined ? (
+                <a
+                  href={user.socials !== undefined ? user.socials : "Link"}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FontAwesomeIcon icon={faLink} />
+                </a>
+              ) : (
                 <FontAwesomeIcon icon={faLink} />
-              </a>
+              )}
             </Col>
             <Col md="auto">
               💼 at {user.work !== undefined ? user.work : "N/A"}
